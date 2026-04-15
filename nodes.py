@@ -10,11 +10,15 @@ import datetime
 script_directory = os.path.dirname(os.path.abspath(__file__))
 
 from comfy import model_management as mm
+import comfy.ops
+import comfy.model_patcher
 from comfy.utils import ProgressBar
+
 device = mm.get_torch_device()
 offload_device = mm.unet_offload_device()
 
 folder_paths.add_model_folder_path("detection", os.path.join(folder_paths.models_dir, "detection"))
+folder_paths.add_model_folder_path("nlf", os.path.join(folder_paths.models_dir, "nlf"))
 
 from .vitpose_utils.utils import bbox_from_detector, crop, load_pose_metas_from_kp2ds_seq, aaposemeta_to_dwpose_scail
 
@@ -406,15 +410,155 @@ class SaveNLFPosesAs3D:
 
         return (filepath,)
 
+
+# NLF model loader
+
+class NLFModelLoader:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "nlf_model": (folder_paths.get_filename_list("nlf"), {
+                    "tooltip": "NLF model (.safetensors) from ComfyUI/models/nlf/",
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("NLF_MODEL",)
+    RETURN_NAMES = ("nlf_model",)
+    FUNCTION = "loadmodel"
+    CATEGORY = "SCAIL-Pose"
+
+    def loadmodel(self, nlf_model):
+        from safetensors.torch import load_file
+        from .nlf_model.model import NLFModel
+        from .nlf_model.multiperson import MultipersonNLF, load_detector
+
+        model_path = folder_paths.get_full_path_or_raise("nlf", nlf_model)
+        logging.info(f"Loading NLF model from {model_path}")
+        sd = load_file(model_path)
+
+        crop_sd = {}
+        detector_sd = {}
+        for k, v in sd.items():
+            if k.startswith('detector.'):
+                detector_sd[k[len('detector.'):]] = v
+            elif not k.startswith('cano_all.'):
+                crop_sd[k] = v
+
+        crop_model = NLFModel.from_state_dict(crop_sd, operations=comfy.ops.manual_cast).eval()
+
+        # Wrap in ModelPatcher for ComfyUI memory management
+        load_device = mm.get_torch_device()
+        model_patcher = comfy.model_patcher.ModelPatcher(
+            crop_model, load_device=load_device, offload_device=offload_device
+        )
+
+        detector = None
+        if detector_sd:
+            logging.info(f"Loading bundled RT-DETR detector ({len(detector_sd)} keys)")
+            detector = load_detector(detector_sd)
+
+        # SMPL canonical points: first 1024 are vertices, last 24 are joints
+        canonical_points = sd.get('cano_all.smpl', crop_model.canonical_locs())
+        num_vertices = 1024 if 'cano_all.smpl' in sd else 0
+
+        pipeline = MultipersonNLF(
+            crop_model=crop_model,
+            model_patcher=model_patcher,
+            detector=detector,
+            canonical_points=canonical_points,
+            num_vertices=num_vertices,
+        )
+
+        logging.info("NLF model loaded successfully")
+        return (pipeline,)
+
+
+class NLFPredictPoses:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "nlf_model": ("NLF_MODEL",),
+                "images": ("IMAGE", {"tooltip": "Input images (BHWC format)"}),
+            },
+            "optional": {
+                "per_batch": ("INT", {"default": 1, "min": -1, "max": 10000, "step": 1,
+                    "tooltip": "Images per batch. -1 = all at once. 1 = lowest VRAM usage."}),
+                "num_aug": ("INT", {"default": 1, "min": 1, "max": 20, "step": 1,
+                    "tooltip": "Number of test-time augmentations. More = slower but more accurate."}),
+                "detector_threshold": ("FLOAT", {"default": 0.3, "min": 0.0, "max": 1.0, "step": 0.05,
+                    "tooltip": "Person detection confidence threshold"}),
+            },
+        }
+
+    RETURN_TYPES = ("NLFPRED", "BBOX",)
+    RETURN_NAMES = ("pose_results", "bboxes")
+    FUNCTION = "predict"
+    CATEGORY = "SCAIL-Pose"
+
+    def predict(self, nlf_model, images, per_batch=1, num_aug=1, detector_threshold=0.3):
+        num_images = images.shape[0]
+        batch_size = num_images if per_batch == -1 else per_batch
+
+        # Convert to NCHW on GPU once
+        images_nchw = images.permute(0, 3, 1, 2)
+
+        # Phase 1: Detect persons per frame
+        nlf_model.detector.load()
+        all_boxes = []
+        pbar_det = ProgressBar(num_images)
+        for i in tqdm(range(0, num_images, batch_size), desc="Detecting"):
+            end_idx = min(i + batch_size, num_images)
+            all_boxes.extend(nlf_model.detector.detect(images_nchw[i:end_idx].to(device), threshold=detector_threshold))
+            pbar_det.update(end_idx - i)
+
+        # Phase 2: Estimate poses per frame
+        mm.load_model_gpu(nlf_model.model_patcher)
+        all_joints3d = []
+        pbar_nlf = ProgressBar(num_images)
+        for i in tqdm(range(0, num_images, batch_size), desc="Estimating poses"):
+            end_idx = min(i + batch_size, num_images)
+
+            result = nlf_model.detect_and_estimate(
+                images_nchw[i:end_idx].to(device), num_aug=num_aug, boxes=all_boxes[i:end_idx],
+            )
+
+            all_joints3d.extend(result['poses3d'])
+            pbar_nlf.update(end_idx - i)
+
+        all_boxes = [b.to(offload_device) for b in all_boxes]
+        all_joints3d = [j.to(offload_device) for j in all_joints3d]
+
+        pose_results = {
+            'joints3d_nonparam': [all_joints3d],
+        }
+
+        formatted_boxes = []
+        for box in all_boxes:
+            if box.numel() == 0 or box.shape[0] == 0:
+                formatted_boxes.append([0.0, 0.0, 0.0, 0.0])
+            else:
+                x, y, w, h = box[0, :4].cpu().tolist()
+                formatted_boxes.append([x, y, x + w, y + h])
+
+        return (pose_results, formatted_boxes)
+
+
 NODE_CLASS_MAPPINGS = {
     "PoseDetectionVitPoseToDWPose": PoseDetectionVitPoseToDWPose,
     "RenderNLFPoses": RenderNLFPoses,
     "ConvertOpenPoseKeypointsToDWPose": ConvertOpenPoseKeypointsToDWPose,
     "SaveNLFPosesAs3D": SaveNLFPosesAs3D,
+    "NLFModelLoader": NLFModelLoader,
+    "NLFPredictPoses": NLFPredictPoses,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "PoseDetectionVitPoseToDWPose": "Pose Detection VitPose to DWPose",
     "RenderNLFPoses": "Render NLF Poses",
     "ConvertOpenPoseKeypointsToDWPose": "Convert OpenPose Keypoints to DWPose",
     "SaveNLFPosesAs3D": "Save NLF Poses as 3D Animation",
+    "NLFModelLoader": "NLF Model Loader",
+    "NLFPredictPoses": "NLF Predict Poses",
 }
