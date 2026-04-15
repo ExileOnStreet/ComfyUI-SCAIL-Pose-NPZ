@@ -7,6 +7,7 @@ For face and hands, instead of DWPose this uses Vitpose and it's outputs convert
 
 VitPose detector is available in these nodes: https://github.com/kijai/ComfyUI-WanAnimatePreprocess
 
-NLF model loader is already included in WanVideoWrapper
+NLF model (to ComfyUI/models/nlf)
 
-Reason this is separate repository is the additional requirements of `taichi` and `pyrender`
+https://huggingface.co/Kijai/WanVideo_comfy/blob/main/SCAIL/nlf_l_multi_0.3.2_fp16.safetensors
+
