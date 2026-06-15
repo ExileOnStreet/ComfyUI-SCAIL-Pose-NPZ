@@ -1,0 +1,3369 @@
+{
+  "id": "95f113e1-6afa-4703-ac4d-fa489ec3e61b",
+  "revision": 0,
+  "last_node_id": 169,
+  "last_link_id": 286,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "PoseDetectionVitPoseToDWPose",
+      "pos": [
+        5217.548867006231,
+        1554.8025174261059
+      ],
+      "size": [
+        271.9595703125,
+        46
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vitpose_model",
+          "name": "vitpose_model",
+          "type": "POSEMODEL",
+          "link": 3
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "label": "dw_poses",
+          "name": "dw_poses",
+          "type": "DWPOSES",
+          "links": [
+            35,
+            285
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PoseDetectionVitPoseToDWPose",
+        "cnr_id": "comfyui-scail-pose",
+        "ver": "93059f0fe4ea3881c0d6ec0e327e5d920554277d",
+        "widget_ue_connectable": {},
+        "aux_id": "kijai/ComfyUI-SCAIL-Pose"
+      },
+      "widgets_values": [],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 10,
+      "type": "INTConstant",
+      "pos": [
+        3893.4489734026006,
+        1913.3096629056975
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "links": [
+            109,
+            111
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "INTConstant"
+      },
+      "widgets_values": [
+        1280
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 63,
+      "type": "SetNode",
+      "pos": [
+        4242.2800449358765,
+        2379.8292918259594
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 92
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "title": "Set_output_height",
+      "properties": {
+        "Node name for S&R": "SetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes",
+        "previousName": "output_height"
+      },
+      "widgets_values": [
+        "output_height"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 14,
+      "type": "MathExpression|pysssss",
+      "pos": [
+        3325.9765554997985,
+        2095.945228023551
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "a",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": 109
+        },
+        {
+          "label": "b",
+          "name": "b",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": null
+        },
+        {
+          "label": "c",
+          "name": "c",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": null
+        },
+        {
+          "label": "expression",
+          "name": "expression",
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "widget": {
+            "name": "expression"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            91
+          ]
+        },
+        {
+          "label": "FLOAT",
+          "name": "FLOAT",
+          "type": "FLOAT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MathExpression|pysssss",
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "a/2"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 62,
+      "type": "SetNode",
+      "pos": [
+        3780.7924225190723,
+        2080.7204421781034
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "title": "Set_output_width",
+      "properties": {
+        "Node name for S&R": "SetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes",
+        "previousName": "output_width"
+      },
+      "widgets_values": [
+        "output_width"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 124,
+      "type": "ConvertWorldNLFPoseToCameraSpace",
+      "pos": [
+        5068.0600475796355,
+        232.46752615865518
+      ],
+      "size": [
+        388.0962890625,
+        250
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 190
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nlf_poses_camera",
+          "type": "NLFPRED",
+          "links": [
+            186,
+            203
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToCameraSpace"
+      },
+      "widgets_values": [
+        "",
+        "generic",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        "Zup->Yup"
+      ]
+    },
+    {
+      "id": 126,
+      "type": "ConvertWorldNLFPoseToCameraSpace",
+      "pos": [
+        5028.471885889811,
+        336.03088783701065
+      ],
+      "size": [
+        388.0962890625,
+        250
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 189
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nlf_poses_camera",
+          "type": "NLFPRED",
+          "links": [
+            190
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToCameraSpace"
+      },
+      "widgets_values": [
+        "",
+        "generic",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        "Zup->Yup"
+      ]
+    },
+    {
+      "id": 125,
+      "type": "ConvertWorldNLFPoseToCameraSpace",
+      "pos": [
+        4982.803274843535,
+        443.02591943112895
+      ],
+      "size": [
+        388.0962890625,
+        250
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 187
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nlf_poses_camera",
+          "type": "NLFPRED",
+          "links": [
+            189
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToCameraSpace"
+      },
+      "widgets_values": [
+        "",
+        "generic",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        "Zup->Yup"
+      ]
+    },
+    {
+      "id": 130,
+      "type": "ConvertWorldNLFPoseToCameraSpace",
+      "pos": [
+        4999.874825546376,
+        673.3832095803566
+      ],
+      "size": [
+        388.0962890625,
+        250
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 208
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nlf_poses_camera",
+          "type": "NLFPRED",
+          "links": [
+            207
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToCameraSpace"
+      },
+      "widgets_values": [
+        "",
+        "generic",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        "Zup->Yup"
+      ]
+    },
+    {
+      "id": 131,
+      "type": "ConvertWorldNLFPoseToCameraSpace",
+      "pos": [
+        4954.2062145001,
+        780.3782411744742
+      ],
+      "size": [
+        388.0962890625,
+        250
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 209
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nlf_poses_camera",
+          "type": "NLFPRED",
+          "links": [
+            208
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToCameraSpace"
+      },
+      "widgets_values": [
+        "",
+        "generic",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        "Zup->Yup"
+      ]
+    },
+    {
+      "id": 133,
+      "type": "RenderDWPoseWithCameraInfo",
+      "pos": [
+        7006.401229543234,
+        2134.1763714943136
+      ],
+      "size": [
+        400,
+        276
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "dw_poses",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "ref_dw_pose",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "camera_info_json",
+          "type": "STRING",
+          "widget": {
+            "name": "camera_info_json"
+          },
+          "link": 220
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RenderDWPoseWithCameraInfo"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "",
+        true,
+        "dw_poses",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 135,
+      "type": "GetNode",
+      "pos": [
+        6762.252622332999,
+        2250.168504085567
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            220
+          ]
+        }
+      ],
+      "title": "Get_camera_info_json",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 68,
+      "type": "GetNode",
+      "pos": [
+        5625.583261824004,
+        1769.440068525558
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            99
+          ]
+        }
+      ],
+      "title": "Get_output_width",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_width"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 69,
+      "type": "GetNode",
+      "pos": [
+        5618.0152593251105,
+        1814.8868994842865
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            100
+          ]
+        }
+      ],
+      "title": "Get_output_height",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_height"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 141,
+      "type": "GetNode",
+      "pos": [
+        5854.0333911295675,
+        566.9132746883511
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            231
+          ]
+        }
+      ],
+      "title": "Get_camera_info_json",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 67,
+      "type": "GetNode",
+      "pos": [
+        6763.491947207752,
+        332.26847584204575
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            214
+          ]
+        }
+      ],
+      "title": "Get_output_height",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_height"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 86,
+      "type": "GetNode",
+      "pos": [
+        5318.362504030144,
+        -615.3988987900336
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            183
+          ]
+        }
+      ],
+      "title": "Get_output_height",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_height"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 85,
+      "type": "GetNode",
+      "pos": [
+        5306.728079697758,
+        -758.3864896385106
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            182
+          ]
+        }
+      ],
+      "title": "Get_output_width",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_width"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 149,
+      "type": "GetNode",
+      "pos": [
+        6591.319456518217,
+        -1751.6470889059538
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            259
+          ]
+        }
+      ],
+      "title": "Get_output_height",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_height"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 148,
+      "type": "GetNode",
+      "pos": [
+        6595.180861401701,
+        -1822.1928435963168
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            258
+          ]
+        }
+      ],
+      "title": "Get_output_width",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_width"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 54,
+      "type": "INTConstant",
+      "pos": [
+        3887.9176901787223,
+        2249.9334343610217
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "links": [
+            110,
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "INTConstant"
+      },
+      "widgets_values": [
+        704
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 79,
+      "type": "RabbitCameraSelector",
+      "pos": [
+        5531.145066892484,
+        2631.24709333686
+      ],
+      "size": [
+        537.3641340869108,
+        426.70666032229974
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RabbitCameraSelector"
+      },
+      "widgets_values": [
+        "<sks> front view high-angle shot medium shot",
+        ""
+      ]
+    },
+    {
+      "id": 13,
+      "type": "MathExpression|pysssss",
+      "pos": [
+        3805.037940818097,
+        2361.9588157436965
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "a",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": 110
+        },
+        {
+          "label": "b",
+          "name": "b",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": null
+        },
+        {
+          "label": "c",
+          "name": "c",
+          "shape": 7,
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "link": null
+        },
+        {
+          "label": "expression",
+          "name": "expression",
+          "type": "INT,FLOAT,IMAGE,LATENT",
+          "widget": {
+            "name": "expression"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            92
+          ]
+        },
+        {
+          "label": "FLOAT",
+          "name": "FLOAT",
+          "type": "FLOAT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MathExpression|pysssss",
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "a/2"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 9,
+      "type": "LoadImage",
+      "pos": [
+        3839.3136345801654,
+        1357.3308689128125
+      ],
+      "size": [
+        274.080078125,
+        314.00006103515625
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            15,
+            119
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "cirno169.png",
+        "image"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 73,
+      "type": "QwenMultiangleCameraNode",
+      "pos": [
+        4458.4931786701,
+        986.6313466002725
+      ],
+      "size": [
+        360.9992775415103,
+        548
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 119
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Prompt",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "Camera Info",
+          "type": "LOAD3D_CAMERA",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenMultiangleCameraNode",
+        "qwenCameraState": {
+          "azimuth": 23,
+          "elevation": 10,
+          "distance": 5
+        }
+      },
+      "widgets_values": [
+        23,
+        10,
+        5,
+        true,
+        true,
+        ""
+      ]
+    },
+    {
+      "id": 12,
+      "type": "ImageResizeKJv2",
+      "pos": [
+        4671.788894419905,
+        1795.2357618922488
+      ],
+      "size": [
+        270,
+        336
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 15
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 111
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 112
+        },
+        {
+          "label": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          },
+          "link": null
+        },
+        {
+          "label": "keep_proportion",
+          "name": "keep_proportion",
+          "type": "COMBO",
+          "widget": {
+            "name": "keep_proportion"
+          },
+          "link": null
+        },
+        {
+          "label": "pad_color",
+          "name": "pad_color",
+          "type": "STRING",
+          "widget": {
+            "name": "pad_color"
+          },
+          "link": null
+        },
+        {
+          "label": "crop_position",
+          "name": "crop_position",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop_position"
+          },
+          "link": null
+        },
+        {
+          "label": "divisible_by",
+          "name": "divisible_by",
+          "type": "INT",
+          "widget": {
+            "name": "divisible_by"
+          },
+          "link": null
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageResizeKJv2",
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "50e7dd34d3b6e6bbab1d41e8068e1ddd19bd4d1b",
+        "widget_ue_connectable": {
+          "width": true,
+          "height": true
+        }
+      },
+      "widgets_values": [
+        480,
+        832,
+        "lanczos",
+        "crop",
+        "255,255,255",
+        "center",
+        16,
+        "cpu"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 1,
+      "type": "OnnxDetectionModelLoader",
+      "pos": [
+        4840.072674477303,
+        1465.918623224119
+      ],
+      "size": [
+        304.0484313964844,
+        106
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vitpose_model",
+          "name": "vitpose_model",
+          "type": "COMBO",
+          "widget": {
+            "name": "vitpose_model"
+          },
+          "link": null
+        },
+        {
+          "label": "yolo_model",
+          "name": "yolo_model",
+          "type": "COMBO",
+          "widget": {
+            "name": "yolo_model"
+          },
+          "link": null
+        },
+        {
+          "label": "onnx_device",
+          "name": "onnx_device",
+          "type": "COMBO",
+          "widget": {
+            "name": "onnx_device"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "POSEMODEL",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OnnxDetectionModelLoader",
+        "cnr_id": "ComfyUI-WanAnimatePreprocess",
+        "ver": "74f834b9ecec0e9f48535ab2ec95219f5288018a",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "vitpose-l-wholebody.onnx",
+        "yolov10m.onnx",
+        "CUDAExecutionProvider"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 129,
+      "type": "ConvertWorldNLFPoseToCameraSpace",
+      "pos": [
+        5039.4629872362,
+        569.8198479020011
+      ],
+      "size": [
+        388.0962890625,
+        250
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 207
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nlf_poses_camera",
+          "type": "NLFPRED",
+          "links": [
+            210
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToCameraSpace"
+      },
+      "widgets_values": [
+        "",
+        "generic",
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        "Zup->Yup"
+      ]
+    },
+    {
+      "id": 142,
+      "type": "RenderNLFPosesWithCameraInfo",
+      "pos": [
+        7706.236548310551,
+        1502.1866632558224
+      ],
+      "size": [
+        400,
+        296
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "nlf_poses",
+          "type": "NLFPRED",
+          "link": null
+        },
+        {
+          "name": "dw_poses",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "ref_dw_pose",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "camera_info_json",
+          "type": "STRING",
+          "widget": {
+            "name": "camera_info_json"
+          },
+          "link": 241
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RenderNLFPosesWithCameraInfo"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "",
+        true,
+        true,
+        "gpu",
+        true,
+        "taichi"
+      ]
+    },
+    {
+      "id": 143,
+      "type": "GetNode",
+      "pos": [
+        7399.363261511362,
+        1600.935979771201
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            241
+          ]
+        }
+      ],
+      "title": "Get_camera_info_json",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 34,
+      "type": "PreviewImage",
+      "pos": [
+        6258.260906095675,
+        1703.2413500781267
+      ],
+      "size": [
+        458.2827497136059,
+        321.9411473000887
+      ],
+      "flags": {},
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 41
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 151,
+      "type": "PreviewNLFPoseGLBWithCamera",
+      "pos": [
+        6908.920518358636,
+        -1820.4202295691707
+      ],
+      "size": [
+        760,
+        612
+      ],
+      "flags": {},
+      "order": 54,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "glb_path",
+          "type": "STRING",
+          "widget": {
+            "name": "glb_path"
+          },
+          "link": 257
+        },
+        {
+          "name": "frame_width",
+          "type": "INT",
+          "widget": {
+            "name": "frame_width"
+          },
+          "link": 258
+        },
+        {
+          "name": "frame_height",
+          "type": "INT",
+          "widget": {
+            "name": "frame_height"
+          },
+          "link": 259
+        }
+      ],
+      "outputs": [
+        {
+          "name": "camera_info_json",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "glb_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewNLFPoseGLBWithCamera"
+      },
+      "widgets_values": [
+        "",
+        "{\"camera_to_world\":[[1,0,0,0],[0,0.998752,0.049938,1.2],[0,-0.049938,0.998752,4],[0,0,0,1]],\"camera_unit_scale\":1000,\"fov_degrees\":55,\"aspect\":1,\"near\":0.01,\"far\":10000,\"target\":[0,1,0],\"frame_width\":1280,\"frame_height\":720}",
+        1280,
+        720,
+        ""
+      ]
+    },
+    {
+      "id": 66,
+      "type": "GetNode",
+      "pos": [
+        6768.076686807186,
+        291.6498554139153
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            213
+          ]
+        }
+      ],
+      "title": "Get_output_width",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_width"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 24,
+      "type": "DrawNLFPoses",
+      "pos": [
+        8068.787943669905,
+        -153.39646619644137
+      ],
+      "size": [
+        270,
+        154
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "poses",
+          "type": "NLFPRED",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DrawNLFPoses"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        4,
+        5,
+        "original"
+      ]
+    },
+    {
+      "id": 119,
+      "type": "SaveNLFPosesAs3D",
+      "pos": [
+        6283.77215636723,
+        -1071.759241717023
+      ],
+      "size": [
+        318.9986328125,
+        106
+      ],
+      "flags": {},
+      "order": 49,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "nlf_poses",
+          "type": "NLFPRED",
+          "link": 170
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output_path",
+          "type": "STRING",
+          "links": [
+            256,
+            257
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveNLFPosesAs3D"
+      },
+      "widgets_values": [
+        "nlf_pose_3d",
+        17.2,
+        21.5
+      ]
+    },
+    {
+      "id": 138,
+      "type": "SetNode",
+      "pos": [
+        6726.1018885878375,
+        -835.8866346375689
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "link": 228
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Set_camera_info_json",
+      "properties": {
+        "Node name for S&R": "SetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes",
+        "previousName": "camera_info_json"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 39,
+      "type": "ConvertWorldNLFPoseToCameraSpace",
+      "pos": [
+        6068.738899912686,
+        517.0065940948293
+      ],
+      "size": [
+        388.0962890625,
+        250
+      ],
+      "flags": {},
+      "order": 46,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 203
+        },
+        {
+          "name": "camera_info_json",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "camera_info_json"
+          },
+          "link": 231
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nlf_poses_camera",
+          "type": "NLFPRED",
+          "links": [
+            170,
+            212,
+            283
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToCameraSpace"
+      },
+      "widgets_values": [
+        "",
+        "threejs",
+        0,
+        -800,
+        -4000,
+        0,
+        0,
+        0,
+        "none"
+      ]
+    },
+    {
+      "id": 45,
+      "type": "ConvertWorldNLFPoseToDWPose",
+      "pos": [
+        6070.670070476496,
+        888.9341066701685
+      ],
+      "size": [
+        347.511328125,
+        322
+      ],
+      "flags": {},
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 210
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 101
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 102
+        },
+        {
+          "name": "camera_info_json",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "camera_info_json"
+          },
+          "link": 229
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dw_poses",
+          "type": "DWPOSES",
+          "links": [
+            266,
+            284
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConvertWorldNLFPoseToDWPose"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "",
+        "threejs",
+        0,
+        -800,
+        -4000,
+        0,
+        0,
+        0,
+        "none",
+        55
+      ]
+    },
+    {
+      "id": 72,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        8534.15726225339,
+        636.1038607493424
+      ],
+      "size": [
+        539.9723995682643,
+        334
+      ],
+      "flags": {},
+      "order": 57,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 286
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 16,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": false,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00011.mp4",
+            "subfolder": "",
+            "type": "temp",
+            "format": "video/h264-mp4",
+            "frame_rate": 16,
+            "workflow": "AnimateDiff_00011.png",
+            "fullpath": "D:\\ComfyUI_windows_portable\\ComfyUI\\temp\\AnimateDiff_00011.mp4"
+          }
+        }
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 140,
+      "type": "GetNode",
+      "pos": [
+        6756.501694742476,
+        384.18635850001203
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            230
+          ]
+        }
+      ],
+      "title": "Get_camera_info_json",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 162,
+      "type": "GetNode",
+      "pos": [
+        7591.21996765732,
+        887.0847417515298
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            275
+          ]
+        }
+      ],
+      "title": "Get_camera_info_json",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 70,
+      "type": "GetNode",
+      "pos": [
+        5807.11568935667,
+        932.7811874340962
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            101
+          ]
+        }
+      ],
+      "title": "Get_output_width",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_width"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 71,
+      "type": "GetNode",
+      "pos": [
+        5807.076580397041,
+        978.7277161383288
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            102
+          ]
+        }
+      ],
+      "title": "Get_output_height",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_height"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 139,
+      "type": "GetNode",
+      "pos": [
+        5755.750502114261,
+        1042.3298330784153
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            229
+          ]
+        }
+      ],
+      "title": "Get_camera_info_json",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 158,
+      "type": "GetNode",
+      "pos": [
+        6695.214092014005,
+        1006.8967836208451
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            267
+          ]
+        }
+      ],
+      "title": "Get_camera_info_json",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "camera_info_json"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 150,
+      "type": "Preview3D",
+      "pos": [
+        7817.60578330258,
+        -1272.4351665812246
+      ],
+      "size": [
+        400,
+        550
+      ],
+      "flags": {},
+      "order": 53,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "camera_info",
+          "shape": 7,
+          "type": "LOAD3D_CAMERA",
+          "link": null
+        },
+        {
+          "name": "bg_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "model_file",
+          "type": "STRING,FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_FBX,FILE_3D_OBJ,FILE_3D_STL,FILE_3D_USDZ,FILE_3D",
+          "widget": {
+            "name": "model_file"
+          },
+          "link": 256
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Preview3D",
+        "Last Time Model File": "",
+        "Scene Config": {
+          "showGrid": true,
+          "backgroundColor": "#282828",
+          "backgroundImage": "",
+          "backgroundRenderMode": "tiled"
+        },
+        "Camera Config": {
+          "cameraType": "perspective",
+          "fov": 35
+        },
+        "Light Config": {
+          "intensity": 3
+        }
+      },
+      "widgets_values": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 157,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        7575.180848248838,
+        -663.2792130531213
+      ],
+      "size": [
+        943.3415176777416,
+        334
+      ],
+      "flags": {},
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 265
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 16,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": false,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00012.mp4",
+            "subfolder": "",
+            "type": "temp",
+            "format": "video/h264-mp4",
+            "frame_rate": 16,
+            "workflow": "AnimateDiff_00012.png",
+            "fullpath": "D:\\ComfyUI_windows_portable\\ComfyUI\\temp\\AnimateDiff_00012.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": 146,
+      "type": "GetNode",
+      "pos": [
+        7594.07613694638,
+        708.6795271863107
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            272
+          ]
+        }
+      ],
+      "title": "Get_output_width",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_width"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 147,
+      "type": "GetNode",
+      "pos": [
+        7575.279961811213,
+        799.6521888986234
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 24,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            273
+          ]
+        }
+      ],
+      "title": "Get_output_height",
+      "properties": {
+        "Node name for S&R": "GetNode",
+        "aux_id": "kijai/ComfyUI-KJNodes"
+      },
+      "widgets_values": [
+        "output_height"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 32,
+      "type": "RenderDWPose",
+      "pos": [
+        5841.923302235193,
+        1703.43073190207
+      ],
+      "size": [
+        270,
+        198
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dw_poses",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": 35
+        },
+        {
+          "name": "ref_dw_pose",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 99
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            41
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RenderDWPose"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "dw_poses",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 155,
+      "type": "RenderDWPoseWithCameraInfo",
+      "pos": [
+        6984.673516308204,
+        853.2384255065714
+      ],
+      "size": [
+        400,
+        276
+      ],
+      "flags": {},
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dw_poses",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": 266
+        },
+        {
+          "name": "ref_dw_pose",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "camera_info_json",
+          "type": "STRING",
+          "widget": {
+            "name": "camera_info_json"
+          },
+          "link": 267
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            265
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RenderDWPoseWithCameraInfo"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "",
+        true,
+        "dw_poses",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 30,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        6593.876299882918,
+        -664.294838137601
+      ],
+      "size": [
+        965.8689612492926,
+        868.227928687111
+      ],
+      "flags": {},
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 276
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 16,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00014.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 16,
+            "workflow": "AnimateDiff_00014.png",
+            "fullpath": "D:\\ComfyUI_windows_portable\\ComfyUI\\output\\AnimateDiff_00014.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": 132,
+      "type": "RenderNLFPosesWithCameraInfo",
+      "pos": [
+        7262.521962098175,
+        340.77044539593356
+      ],
+      "size": [
+        400,
+        296
+      ],
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses",
+          "type": "NLFPRED",
+          "link": 212
+        },
+        {
+          "name": "dw_poses",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "ref_dw_pose",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 213
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 214
+        },
+        {
+          "name": "camera_info_json",
+          "type": "STRING",
+          "widget": {
+            "name": "camera_info_json"
+          },
+          "link": 230
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            276
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RenderNLFPosesWithCameraInfo"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "",
+        false,
+        false,
+        "gpu",
+        false,
+        "taichi"
+      ]
+    },
+    {
+      "id": 161,
+      "type": "RenderNLFPosesWithCameraInfo",
+      "pos": [
+        7895.957648874284,
+        661.89036196734
+      ],
+      "size": [
+        400,
+        296
+      ],
+      "flags": {},
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses",
+          "type": "NLFPRED",
+          "link": 283
+        },
+        {
+          "name": "dw_poses",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": 284
+        },
+        {
+          "name": "ref_dw_pose",
+          "shape": 7,
+          "type": "DWPOSES",
+          "link": 285
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 272
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 273
+        },
+        {
+          "name": "camera_info_json",
+          "type": "STRING",
+          "widget": {
+            "name": "camera_info_json"
+          },
+          "link": 275
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            286
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RenderNLFPosesWithCameraInfo"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "",
+        true,
+        false,
+        "gpu",
+        true,
+        "taichi"
+      ]
+    },
+    {
+      "id": 123,
+      "type": "PreviewWorldNLFPoseWithCamera",
+      "pos": [
+        5598.389766277592,
+        -767.5105657464633
+      ],
+      "size": [
+        968.376193305453,
+        1131.3774006303483
+      ],
+      "flags": {},
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "nlf_poses_world",
+          "type": "NLFPRED",
+          "link": 186
+        },
+        {
+          "name": "frame_width",
+          "type": "INT",
+          "widget": {
+            "name": "frame_width"
+          },
+          "link": 182
+        },
+        {
+          "name": "frame_height",
+          "type": "INT",
+          "widget": {
+            "name": "frame_height"
+          },
+          "link": 183
+        }
+      ],
+      "outputs": [
+        {
+          "name": "camera_info_json",
+          "type": "STRING",
+          "links": [
+            228
+          ]
+        },
+        {
+          "name": "glb_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewWorldNLFPoseWithCamera"
+      },
+      "widgets_values": [
+        "{\"camera_to_world\":[[-0.897427,0.043322,-0.439031,-1.957518],[0,0.995167,0.0982,1.638064],[0.441163,0.088128,-0.893089,-3.651591],[0,0,0,1]],\"camera_unit_scale\":1000,\"fov_degrees\":20,\"aspect\":1,\"near\":0.01,\"far\":100,\"target\":[-0.919228,1.405824,-1.539472],\"frame_width\":640,\"frame_height\":352}",
+        1280,
+        720,
+        16,
+        0.001,
+        0.02,
+        0.001,
+        ""
+      ]
+    },
+    {
+      "id": 36,
+      "type": "LoadSMPLXNPZAsNLFPred",
+      "pos": [
+        4299.672946735216,
+        375.19156551664184
+      ],
+      "size": [
+        371.15267648721544,
+        397.16069501067545
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "pose_results_24",
+          "type": "NLFPRED",
+          "links": [
+            187
+          ]
+        },
+        {
+          "name": "pose_results_all",
+          "type": "NLFPRED",
+          "links": [
+            209
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadSMPLXNPZAsNLFPred"
+      },
+      "widgets_values": [
+        "C:\\Users\\root\\Desktop\\hysheng\\SMPL_DIR\\models",
+        "D:\\hysheng-storage\\100STYLE_NPZ_amass\\NPZ_amass\\Angry_FR.npz",
+        "auto",
+        10,
+        24,
+        16,
+        64,
+        64,
+        160,
+        16
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 95,
+      "type": "VNCCS_PoseGenerator",
+      "pos": [
+        8971.85929978963,
+        85.73049525948566
+      ],
+      "size": [
+        400,
+        350
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "openpose_grid",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VNCCS_PoseGenerator"
+      },
+      "widgets_values": [
+        "{\n  \"canvas\": {\n    \"width\": 512,\n    \"height\": 1536\n  },\n  \"poses\": [\n    {\n      \"nose\": [\n        256,\n        200\n      ],\n      \"neck\": [\n        256,\n        320\n      ],\n      \"r_shoulder\": [\n        320,\n        320\n      ],\n      \"r_elbow\": [\n        350,\n        520\n      ],\n      \"r_wrist\": [\n        360,\n        720\n      ],\n      \"l_shoulder\": [\n        192,\n        320\n      ],\n      \"l_elbow\": [\n        162,\n        520\n      ],\n      \"l_wrist\": [\n        152,\n        720\n      ],\n      \"r_hip\": [\n        290,\n        720\n      ],\n      \"r_knee\": [\n        295,\n        1020\n      ],\n      \"r_ankle\": [\n        300,\n        1320\n      ],\n      \"l_hip\": [\n        222,\n        720\n      ],\n      \"l_knee\": [\n        217,\n        1020\n      ],\n      \"l_ankle\": [\n        212,\n        1320\n      ],\n      \"r_eye\": [\n        270,\n        185\n      ],\n      \"l_eye\": [\n        242,\n        185\n      ],\n      \"r_ear\": [\n        285,\n        195\n      ],\n      \"l_ear\": [\n        227,\n        195\n      ]\n    },\n    {\n      \"nose\": [\n        265.13651655614376,\n        255.83343881368637\n      ],\n      \"neck\": [\n        260.5378964692354,\n        404.13893661648035\n      ],\n      \"r_shoulder\": [\n        168.5654947310686,\n        405.28859163820744\n      ],\n      \"r_elbow\": [\n        122.5792938619852,\n        577.7368448972702\n      ],\n      \"r_wrist\": [\n        161.6675646007061,\n        697.300967156887\n      ],\n      \"l_shoulder\": [\n        352.51029820740223,\n        402.98928159475327\n      ],\n      \"l_elbow\": [\n        398.49649907648563,\n        566.2402946799994\n      ],\n      \"l_wrist\": [\n        380.1020187288523,\n        692.7023470699787\n      ],\n      \"r_hip\": [\n        205.35445542633533,\n        773.1781985908747\n      ],\n      \"r_knee\": [\n        214.55169560015202,\n        1067.4898841530085\n      ],\n      \"r_ankle\": [\n        196.15721525251865,\n        1398.590530410409\n      ],\n      \"l_hip\": [\n        336.41512790322304,\n        766.2802684605122\n      ],\n      \"l_knee\": [\n        324.9185776859522,\n        1067.4898841530085\n      ],\n      \"l_ankle\": [\n        320.31995759904385,\n        1396.2912203669548\n      ],\n      \"r_eye\": [\n        239.8441060781479,\n        235.13964842259884\n      ],\n      \"l_eye\": [\n        290.42892703413963,\n        235.13964842259884\n      ],\n      \"r_ear\": [\n        198.45652529597282,\n        253.5341287702322\n      ],\n      \"l_ear\": [\n        322.619267642498,\n        251.23481872677803\n      ]\n    },\n    {\n      \"nose\": [\n        266.5826352487006,\n        245.91820714871096\n      ],\n      \"neck\": [\n        268.8913542454443,\n        401.75673942888784\n      ],\n      \"r_shoulder\": [\n        178.8513133724532,\n        407.5285369207463\n      ],\n      \"r_elbow\": [\n        139.6030904278159,\n        580.6824616764984\n      ],\n      \"r_wrist\": [\n        188.0861893594265,\n        580.6824616764984\n      ],\n      \"l_shoulder\": [\n        358.9313951184354,\n        395.98494193702936\n      ],\n      \"l_elbow\": [\n        405.1057750533023,\n        566.8301476960382\n      ],\n      \"l_wrist\": [\n        361.2401141151786,\n        569.1388666927814\n      ],\n      \"r_hip\": [\n        213.48209832360362,\n        742.2927914485335\n      ],\n      \"r_knee\": [\n        218.09953631709004,\n        1058.587294002374\n      ],\n      \"r_ankle\": [\n        158.07284240176295,\n        1395.660267526905\n      ],\n      \"l_hip\": [\n        345.0790811379752,\n        737.6753534550467\n      ],\n      \"l_knee\": [\n        342.77036214123154,\n        1051.6611370121439\n      ],\n      \"l_ankle\": [\n        342.77036214123154,\n        1381.8079535464449\n      ],\n      \"r_eye\": [\n        238.8780072877803,\n        229.75717417150736\n      ],\n      \"l_eye\": [\n        289.6698252161343,\n        225.1397361780207\n      ],\n      \"r_ear\": [\n        201.93850333988667,\n        255.15308313568426\n      ],\n      \"l_ear\": [\n        324.30061016728496,\n        248.22692614545417\n      ]\n    },\n    {\n      \"nose\": [\n        307.26981327186013,\n        251.7362011745572\n      ],\n      \"neck\": [\n        293.14313911149907,\n        404.7751712451379\n      ],\n      \"r_shoulder\": [\n        203.67420276254416,\n        404.7751712451379\n      ],\n      \"r_elbow\": [\n        161.29418028146029,\n        583.7130439430475\n      ],\n      \"r_wrist\": [\n        166.00307166824769,\n        727.3342312400539\n      ],\n      \"l_shoulder\": [\n        382.612075460454,\n        404.7751712451379\n      ],\n      \"l_elbow\": [\n        422.63765224814415,\n        569.5863697826862\n      ],\n      \"l_wrist\": [\n        394.38430392742157,\n        687.3086544523637\n      ],\n      \"r_hip\": [\n        224.8642140030861,\n        772.0686994145315\n      ],\n      \"r_knee\": [\n        229.5731053898735,\n        1078.1466395556927\n      ],\n      \"r_ankle\": [\n        130.686386267344,\n        1379.5156883100667\n      ],\n      \"l_hip\": [\n        352.0042814463377,\n        767.3598080277443\n      ],\n      \"l_knee\": [\n        328.45982451240207,\n        1078.1466395556927\n      ],\n      \"l_ankle\": [\n        302.5609218850732,\n        1391.2879167770348\n      ],\n      \"r_eye\": [\n        279.01646495113755,\n        228.19174424062157\n      ],\n      \"l_eye\": [\n        330.81427020579576,\n        230.54618993401527\n      ],\n      \"r_ear\": [\n        236.63644247005368,\n        249.3817554811635\n      ],\n      \"l_ear\": [\n        363.7765099133053,\n        251.7362011745572\n      ]\n    },\n    {\n      \"nose\": [\n        370.78190183639526,\n        250.4505010843277\n      ],\n      \"neck\": [\n        277.0852652788162,\n        377.78182768821716\n      ],\n      \"r_shoulder\": [\n        257.86544239521027,\n        370.57439410686493\n      ],\n      \"r_elbow\": [\n        236.24314165115356,\n        565.1751008033752\n      ],\n      \"r_wrist\": [\n        329.9397782087326,\n        704.5188167095184\n      ],\n      \"l_shoulder\": [\n        296.3050881624222,\n        384.9892612695694\n      ],\n      \"l_elbow\": [\n        298.7075660228729,\n        586.797401547432\n      ],\n      \"l_wrist\": [\n        334.7447339296341,\n        711.7262502908707\n      ],\n      \"r_hip\": [\n        231.43818593025208,\n        738.1535067558289\n      ],\n      \"r_knee\": [\n        257.86544239521027,\n        1072.0979293584824\n      ],\n      \"r_ankle\": [\n        209.81588518619537,\n        1406.0423519611359\n      ],\n      \"l_hip\": [\n        262.67039811611176,\n        738.1535067558289\n      ],\n      \"l_knee\": [\n        289.09765458106995,\n        1067.2929736375809\n      ],\n      \"l_ankle\": [\n        180.98615086078644,\n        1386.82252907753\n      ],\n      \"r_eye\": [\n        349.15960109233856,\n        219.21828889846802\n      ],\n      \"l_eye\": [\n        370.78190183639526,\n        221.62076675891876\n      ],\n      \"r_ear\": [\n        274.6827874183655,\n        226.42572247982025\n      ],\n      \"l_ear\": [\n        325.1348224878311,\n        228.828200340271\n      ]\n    },\n    {\n      \"nose\": [\n        268.544684494535,\n        240.91976874818397\n      ],\n      \"neck\": [\n        265.0468257951238,\n        395.9915044220786\n      ],\n      \"r_shoulder\": [\n        177.60035830984498,\n        394.82555152227496\n      ],\n      \"r_elbow\": [\n        142.62177131573344,\n        562.7227690940103\n      ],\n      \"r_wrist\": [\n        93.65174952397729,\n        709.6328344692788\n      ],\n      \"l_shoulder\": [\n        352.49329328040267,\n        397.15745732188225\n      ],\n      \"l_elbow\": [\n        394.4675976733365,\n        565.0546748936176\n      ],\n      \"l_wrist\": [\n        445.7695252647004,\n        718.9604576677084\n      ],\n      \"r_hip\": [\n        191.5917931074896,\n        737.615704064568\n      ],\n      \"r_knee\": [\n        198.5875105063119,\n        1045.4272696127493\n      ],\n      \"r_ankle\": [\n        189.2598873078823,\n        1364.8983641589684\n      ],\n      \"l_hip\": [\n        324.51042368511344,\n        737.615704064568\n      ],\n      \"l_knee\": [\n        317.5147062862916,\n        1043.095363813142\n      ],\n      \"l_ankle\": [\n        315.18280048668385,\n        1348.575023561716\n      ],\n      \"r_eye\": [\n        242.89372069885349,\n        217.60071075210976\n      ],\n      \"l_eye\": [\n        298.85945988943195,\n        219.93261655171705\n      ],\n      \"r_ear\": [\n        203.25132210552692,\n        243.25167454779148\n      ],\n      \"l_ear\": [\n        336.16995268315077,\n        245.583580347399\n      ]\n    },\n    {\n      \"nose\": [\n        354.89480129877734,\n        241.69611922899867\n      ],\n      \"neck\": [\n        252.69875756899512,\n        384.77058045069384\n      ],\n      \"r_shoulder\": [\n        175.4839689731598,\n        389.3126268386841\n      ],\n      \"r_elbow\": [\n        136.87657467524207,\n        580.0785751342773\n      ],\n      \"r_wrist\": [\n        98.26918037732446,\n        745.8632682959237\n      ],\n      \"l_shoulder\": [\n        329.91354616483045,\n        380.2285340627036\n      ],\n      \"l_elbow\": [\n        366.24991726875305,\n        561.9103895823159\n      ],\n      \"l_wrist\": [\n        409.3993579546609,\n        718.6109899679818\n      ],\n      \"r_hip\": [\n        209.54931688308716,\n        732.2371291319528\n      ],\n      \"r_knee\": [\n        191.38113133112586,\n        1047.9093530972796\n      ],\n      \"r_ankle\": [\n        111.89531954129541,\n        1354.4974842866259\n      ],\n      \"l_hip\": [\n        329.91354616483045,\n        729.9661059379578\n      ],\n      \"l_knee\": [\n        318.55843019485474,\n        1050.180376291275\n      ],\n      \"l_ankle\": [\n        332.1845693588257,\n        1372.6656698385877\n      ],\n      \"r_eye\": [\n        334.4555925528209,\n        209.90179451306676\n      ],\n      \"l_eye\": [\n        361.7078708807627,\n        214.44384090105677\n      ],\n      \"r_ear\": [\n        239.07261840502417,\n        218.98588728904724\n      ],\n      \"l_ear\": [\n        323.1004765828451,\n        228.06998006502772\n      ]\n    },\n    {\n      \"nose\": [\n        258.94939708709717,\n        252.844504992167\n      ],\n      \"neck\": [\n        253.35616477330518,\n        389.3193734486897\n      ],\n      \"r_shoulder\": [\n        164.98309421539307,\n        391.55666637420654\n      ],\n      \"r_elbow\": [\n        140.3728720347085,\n        581.7265650431314\n      ],\n      \"r_wrist\": [\n        120.23723570505763,\n        729.3878981272378\n      ],\n      \"l_shoulder\": [\n        341.7292353312173,\n        387.08208052317286\n      ],\n      \"l_elbow\": [\n        393.186972618103,\n        539.217999458313\n      ],\n      \"l_wrist\": [\n        372.0097432737514,\n        679.2034735620296\n      ],\n      \"r_hip\": [\n        187.35602347056056,\n        740.5743627548218\n      ],\n      \"r_knee\": [\n        196.30519517262792,\n        1042.608907699585\n      ],\n      \"r_ankle\": [\n        189.59331639607763,\n        1367.016381899516\n      ],\n      \"l_hip\": [\n        319.3563060760498,\n        742.8116556803384\n      ],\n      \"l_knee\": [\n        319.3563060760498,\n        1042.608907699585\n      ],\n      \"l_ankle\": [\n        326.0681848526001,\n        1364.779088973999\n      ],\n      \"r_eye\": [\n        234.3391749064126,\n        230.4715757369995\n      ],\n      \"l_eye\": [\n        288.03420511881495,\n        230.4715757369995\n      ],\n      \"r_ear\": [\n        191.83060932159424,\n        246.1326262156167\n      ],\n      \"l_ear\": [\n        323.8308919270835,\n        243.8953332901001\n      ]\n    },\n    {\n      \"nose\": [\n        212.8460352420807,\n        241.63070877393102\n      ],\n      \"neck\": [\n        221.85462244351697,\n        385.7681039969127\n      ],\n      \"r_shoulder\": [\n        136.27304402987147,\n        381.26381039619446\n      ],\n      \"r_elbow\": [\n        116.00372282663966,\n        577.2005820274353\n      ],\n      \"r_wrist\": [\n        95.73440162340785,\n        737.103004852931\n      ],\n      \"l_shoulder\": [\n        307.4362008571625,\n        390.27239759763097\n      ],\n      \"l_elbow\": [\n        332.2098156611123,\n        574.9484352270765\n      ],\n      \"l_wrist\": [\n        350.22699006398534,\n        741.6072984536486\n      ],\n      \"r_hip\": [\n        156.54236523310328,\n        743.8594452540083\n      ],\n      \"r_knee\": [\n        179.06383323669434,\n        1045.6471165021262\n      ],\n      \"r_ankle\": [\n        188.07242043813085,\n        1358.6955217520394\n      ],\n      \"l_hip\": [\n        287.16687965393066,\n        739.3551516532898\n      ],\n      \"l_knee\": [\n        316.444788058599,\n        1038.890676101049\n      ],\n      \"l_ankle\": [\n        372.74845806757594,\n        1354.1912281513214\n      ],\n      \"r_eye\": [\n        185.8202736377716,\n        210.10065356890345\n      ],\n      \"l_eye\": [\n        244.37609044710803,\n        216.85709396998072\n      ],\n      \"r_ear\": [\n        145.28163123130798,\n        225.86568117141724\n      ],\n      \"l_ear\": [\n        291.6711732546487,\n        234.87426837285375\n      ]\n    },\n    {\n      \"nose\": [\n        270.0473074913025,\n        245.33865094184875\n      ],\n      \"neck\": [\n        259.05959951877594,\n        396.96902096271515\n      ],\n      \"r_shoulder\": [\n        171.15793573856354,\n        394.77147936820984\n      ],\n      \"r_elbow\": [\n        133.79972863197327,\n        566.179723739624\n      ],\n      \"r_wrist\": [\n        188.73826849460602,\n        566.179723739624\n      ],\n      \"l_shoulder\": [\n        346.96126329898834,\n        399.16656255722046\n      ],\n      \"l_elbow\": [\n        384.3194704055786,\n        566.179723739624\n      ],\n      \"l_wrist\": [\n        333.7760137319565,\n        577.1674317121506\n      ],\n      \"r_hip\": [\n        186.5407269001007,\n        735.3904265165329\n      ],\n      \"r_knee\": [\n        193.13335168361664,\n        1043.0462497472763\n      ],\n      \"r_ankle\": [\n        184.3431853055954,\n        1368.2824057340622\n      ],\n      \"l_hip\": [\n        316.195680975914,\n        735.3904265165329\n      ],\n      \"l_knee\": [\n        311.8005977869034,\n        1054.0339577198029\n      ],\n      \"l_ankle\": [\n        366.73913764953613,\n        1379.2701137065887\n      ],\n      \"r_eye\": [\n        243.67680835723877,\n        225.56077659130096\n      ],\n      \"l_eye\": [\n        296.4178066253662,\n        229.95585978031158\n      ],\n      \"r_ear\": [\n        204.1210596561432,\n        249.73373413085938\n      ],\n      \"l_ear\": [\n        327.18338894844055,\n        254.12881731987\n      ]\n    },\n    {\n      \"nose\": [\n        344.11319979031896,\n        245.34850724538182\n      ],\n      \"neck\": [\n        259.99156920115183,\n        393.129750172297\n      ],\n      \"r_shoulder\": [\n        207.6997447808585,\n        393.129750172297\n      ],\n      \"r_elbow\": [\n        171.3228234450021,\n        600.023490269979\n      ],\n      \"r_wrist\": [\n        166.77570827802037,\n        750.0782907803855\n      ],\n      \"l_shoulder\": [\n        312.2833936214447,\n        393.129750172297\n      ],\n      \"l_elbow\": [\n        323.6511815388999,\n        586.382144769033\n      ],\n      \"l_wrist\": [\n        350.9338725407915,\n        722.7955997784934\n      ],\n      \"r_hip\": [\n        239.5295509497323,\n        754.6254059473672\n      ],\n      \"r_knee\": [\n        266.8122419516244,\n        1057.008564551671\n      ],\n      \"r_ankle\": [\n        187.23772652943944,\n        1375.3066262404127\n      ],\n      \"l_hip\": [\n        314.556951204936,\n        752.3518483638763\n      ],\n      \"l_knee\": [\n        285.0007026195526,\n        1063.829237302144\n      ],\n      \"l_ankle\": [\n        282.72714503606176,\n        1377.580183823903\n      ],\n      \"r_eye\": [\n        319.1040663719177,\n        218.06581624348973\n      ],\n      \"l_eye\": [\n        350.9338725407915,\n        220.3393738269806\n      ],\n      \"r_ear\": [\n        237.25599336624146,\n        229.43360416094447\n      ],\n      \"l_ear\": [\n        330.47185428937246,\n        231.70716174443578\n      ]\n    },\n    {\n      \"nose\": [\n        192.68668580055237,\n        240.20380266507482\n      ],\n      \"neck\": [\n        227.17166233062744,\n        395.38619705041265\n      ],\n      \"r_shoulder\": [\n        137.51072335243225,\n        391.93769939740514\n      ],\n      \"r_elbow\": [\n        36.35479219754552,\n        490.79463211695384\n      ],\n      \"r_wrist\": [\n        86.93275777498866,\n        591.9505632718401\n      ],\n      \"l_shoulder\": [\n        316.83260130882263,\n        398.83469470342015\n      ],\n      \"l_elbow\": [\n        360.5135715802512,\n        571.2595773537951\n      ],\n      \"l_wrist\": [\n        408.79253872235586,\n        718.3954772154493\n      ],\n      \"r_hip\": [\n        130.61372804641724,\n        739.0864631334944\n      ],\n      \"r_knee\": [\n        146.70671709378576,\n        1040.2552581628165\n      ],\n      \"r_ankle\": [\n        167.3977030118308,\n        1357.5170422395072\n      ],\n      \"l_hip\": [\n        257.058641990026,\n        739.0864631334944\n      ],\n      \"l_knee\": [\n        286.94562164942454,\n        1031.059264421463\n      ],\n      \"l_ankle\": [\n        351.3175778388977,\n        1339.1250547568002\n      ],\n      \"r_eye\": [\n        171.99569988250732,\n        224.1108136177063\n      ],\n      \"l_eye\": [\n        222.57366545995046,\n        219.51281674702977\n      ],\n      \"r_ear\": [\n        155.9027108351388,\n        251.69879484176636\n      ],\n      \"l_ear\": [\n        280.04862634340907,\n        242.50280110041285\n      ]\n    }\n  ]\n}",
+        6,
+        100,
+        null
+      ]
+    },
+    {
+      "id": 169,
+      "type": "DaVinCi_pose_generator",
+      "pos": [
+        9506.5042268296,
+        1.477164868310255
+      ],
+      "size": [
+        400,
+        350
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "openpose_grid",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DaVinCi_pose_generator"
+      },
+      "widgets_values": [
+        "{\n  \"canvas\": {\n    \"width\": 512,\n    \"height\": 1536\n  },\n  \"poses\": [\n    {\n      \"nose\": [\n        256,\n        200\n      ],\n      \"neck\": [\n        256,\n        320\n      ],\n      \"r_shoulder\": [\n        320,\n        320\n      ],\n      \"r_elbow\": [\n        594.140533771277,\n        484.9338525675178\n      ],\n      \"r_wrist\": [\n        890.2938507809827,\n        454.56918117996497\n      ],\n      \"l_shoulder\": [\n        192,\n        320\n      ],\n      \"l_elbow\": [\n        -35.85063665620402,\n        484.9338525675178\n      ],\n      \"l_wrist\": [\n        -267.11321820553246,\n        512.8448537889885\n      ],\n      \"r_hip\": [\n        290,\n        720\n      ],\n      \"r_knee\": [\n        440.5738267409098,\n        1083.337224845162\n      ],\n      \"r_ankle\": [\n        300,\n        1320\n      ],\n      \"l_hip\": [\n        222,\n        720\n      ],\n      \"l_knee\": [\n        105.00954484461933,\n        993.6605633039119\n      ],\n      \"l_ankle\": [\n        -36.737436301227476,\n        1282.9401166627829\n      ],\n      \"r_eye\": [\n        270,\n        185\n      ],\n      \"l_eye\": [\n        242,\n        185\n      ],\n      \"r_ear\": [\n        285,\n        195\n      ],\n      \"l_ear\": [\n        227,\n        195\n      ],\n      \"r_bigtoe\": [\n        300,\n        1320\n      ],\n      \"r_smalltoe\": [\n        300,\n        1320\n      ],\n      \"r_heel\": [\n        300,\n        1320\n      ],\n      \"l_bigtoe\": [\n        212,\n        1320\n      ],\n      \"l_smalltoe\": [\n        212,\n        1320\n      ],\n      \"l_heel\": [\n        212,\n        1320\n      ]\n    },\n    {\n      \"nose\": [\n        256,\n        200\n      ],\n      \"neck\": [\n        256,\n        320\n      ],\n      \"r_shoulder\": [\n        320,\n        320\n      ],\n      \"r_elbow\": [\n        350,\n        520\n      ],\n      \"r_wrist\": [\n        360,\n        720\n      ],\n      \"l_shoulder\": [\n        192,\n        320\n      ],\n      \"l_elbow\": [\n        162,\n        520\n      ],\n      \"l_wrist\": [\n        152,\n        720\n      ],\n      \"r_hip\": [\n        290,\n        720\n      ],\n      \"r_knee\": [\n        295,\n        1020\n      ],\n      \"r_ankle\": [\n        300,\n        1320\n      ],\n      \"l_hip\": [\n        222,\n        720\n      ],\n      \"l_knee\": [\n        217,\n        1020\n      ],\n      \"l_ankle\": [\n        212,\n        1320\n      ],\n      \"r_eye\": [\n        270,\n        185\n      ],\n      \"l_eye\": [\n        242,\n        185\n      ],\n      \"r_ear\": [\n        285,\n        195\n      ],\n      \"l_ear\": [\n        227,\n        195\n      ]\n    },\n    {\n      \"nose\": [\n        266.5826352487006,\n        245.91820714871096\n      ],\n      \"neck\": [\n        268.8913542454443,\n        401.75673942888784\n      ],\n      \"r_shoulder\": [\n        178.8513133724532,\n        407.5285369207463\n      ],\n      \"r_elbow\": [\n        139.6030904278159,\n        580.6824616764984\n      ],\n      \"r_wrist\": [\n        188.0861893594265,\n        580.6824616764984\n      ],\n      \"l_shoulder\": [\n        358.9313951184354,\n        395.98494193702936\n      ],\n      \"l_elbow\": [\n        405.1057750533023,\n        566.8301476960382\n      ],\n      \"l_wrist\": [\n        361.2401141151786,\n        569.1388666927814\n      ],\n      \"r_hip\": [\n        213.48209832360362,\n        742.2927914485335\n      ],\n      \"r_knee\": [\n        218.09953631709004,\n        1058.587294002374\n      ],\n      \"r_ankle\": [\n        158.07284240176295,\n        1395.660267526905\n      ],\n      \"l_hip\": [\n        345.0790811379752,\n        737.6753534550467\n      ],\n      \"l_knee\": [\n        342.77036214123154,\n        1051.6611370121439\n      ],\n      \"l_ankle\": [\n        342.77036214123154,\n        1381.8079535464449\n      ],\n      \"r_eye\": [\n        238.8780072877803,\n        229.75717417150736\n      ],\n      \"l_eye\": [\n        289.6698252161343,\n        225.1397361780207\n      ],\n      \"r_ear\": [\n        201.93850333988667,\n        255.15308313568426\n      ],\n      \"l_ear\": [\n        324.30061016728496,\n        248.22692614545417\n      ]\n    },\n    {\n      \"nose\": [\n        307.26981327186013,\n        251.7362011745572\n      ],\n      \"neck\": [\n        293.14313911149907,\n        404.7751712451379\n      ],\n      \"r_shoulder\": [\n        203.67420276254416,\n        404.7751712451379\n      ],\n      \"r_elbow\": [\n        161.29418028146029,\n        583.7130439430475\n      ],\n      \"r_wrist\": [\n        166.00307166824769,\n        727.3342312400539\n      ],\n      \"l_shoulder\": [\n        382.612075460454,\n        404.7751712451379\n      ],\n      \"l_elbow\": [\n        422.63765224814415,\n        569.5863697826862\n      ],\n      \"l_wrist\": [\n        394.38430392742157,\n        687.3086544523637\n      ],\n      \"r_hip\": [\n        224.8642140030861,\n        772.0686994145315\n      ],\n      \"r_knee\": [\n        229.5731053898735,\n        1078.1466395556927\n      ],\n      \"r_ankle\": [\n        130.686386267344,\n        1379.5156883100667\n      ],\n      \"l_hip\": [\n        352.0042814463377,\n        767.3598080277443\n      ],\n      \"l_knee\": [\n        328.45982451240207,\n        1078.1466395556927\n      ],\n      \"l_ankle\": [\n        302.5609218850732,\n        1391.2879167770348\n      ],\n      \"r_eye\": [\n        279.01646495113755,\n        228.19174424062157\n      ],\n      \"l_eye\": [\n        330.81427020579576,\n        230.54618993401527\n      ],\n      \"r_ear\": [\n        236.63644247005368,\n        249.3817554811635\n      ],\n      \"l_ear\": [\n        363.7765099133053,\n        251.7362011745572\n      ]\n    },\n    {\n      \"nose\": [\n        370.78190183639526,\n        250.4505010843277\n      ],\n      \"neck\": [\n        277.0852652788162,\n        377.78182768821716\n      ],\n      \"r_shoulder\": [\n        257.86544239521027,\n        370.57439410686493\n      ],\n      \"r_elbow\": [\n        236.24314165115356,\n        565.1751008033752\n      ],\n      \"r_wrist\": [\n        329.9397782087326,\n        704.5188167095184\n      ],\n      \"l_shoulder\": [\n        296.3050881624222,\n        384.9892612695694\n      ],\n      \"l_elbow\": [\n        298.7075660228729,\n        586.797401547432\n      ],\n      \"l_wrist\": [\n        334.7447339296341,\n        711.7262502908707\n      ],\n      \"r_hip\": [\n        231.43818593025208,\n        738.1535067558289\n      ],\n      \"r_knee\": [\n        257.86544239521027,\n        1072.0979293584824\n      ],\n      \"r_ankle\": [\n        209.81588518619537,\n        1406.0423519611359\n      ],\n      \"l_hip\": [\n        262.67039811611176,\n        738.1535067558289\n      ],\n      \"l_knee\": [\n        289.09765458106995,\n        1067.2929736375809\n      ],\n      \"l_ankle\": [\n        180.98615086078644,\n        1386.82252907753\n      ],\n      \"r_eye\": [\n        349.15960109233856,\n        219.21828889846802\n      ],\n      \"l_eye\": [\n        370.78190183639526,\n        221.62076675891876\n      ],\n      \"r_ear\": [\n        274.6827874183655,\n        226.42572247982025\n      ],\n      \"l_ear\": [\n        325.1348224878311,\n        228.828200340271\n      ]\n    },\n    {\n      \"nose\": [\n        268.544684494535,\n        240.91976874818397\n      ],\n      \"neck\": [\n        265.0468257951238,\n        395.9915044220786\n      ],\n      \"r_shoulder\": [\n        177.60035830984498,\n        394.82555152227496\n      ],\n      \"r_elbow\": [\n        142.62177131573344,\n        562.7227690940103\n      ],\n      \"r_wrist\": [\n        93.65174952397729,\n        709.6328344692788\n      ],\n      \"l_shoulder\": [\n        352.49329328040267,\n        397.15745732188225\n      ],\n      \"l_elbow\": [\n        394.4675976733365,\n        565.0546748936176\n      ],\n      \"l_wrist\": [\n        445.7695252647004,\n        718.9604576677084\n      ],\n      \"r_hip\": [\n        191.5917931074896,\n        737.615704064568\n      ],\n      \"r_knee\": [\n        198.5875105063119,\n        1045.4272696127493\n      ],\n      \"r_ankle\": [\n        189.2598873078823,\n        1364.8983641589684\n      ],\n      \"l_hip\": [\n        324.51042368511344,\n        737.615704064568\n      ],\n      \"l_knee\": [\n        317.5147062862916,\n        1043.095363813142\n      ],\n      \"l_ankle\": [\n        315.18280048668385,\n        1348.575023561716\n      ],\n      \"r_eye\": [\n        242.89372069885349,\n        217.60071075210976\n      ],\n      \"l_eye\": [\n        298.85945988943195,\n        219.93261655171705\n      ],\n      \"r_ear\": [\n        203.25132210552692,\n        243.25167454779148\n      ],\n      \"l_ear\": [\n        336.16995268315077,\n        245.583580347399\n      ]\n    },\n    {\n      \"nose\": [\n        354.89480129877734,\n        241.69611922899867\n      ],\n      \"neck\": [\n        252.69875756899512,\n        384.77058045069384\n      ],\n      \"r_shoulder\": [\n        175.4839689731598,\n        389.3126268386841\n      ],\n      \"r_elbow\": [\n        136.87657467524207,\n        580.0785751342773\n      ],\n      \"r_wrist\": [\n        98.26918037732446,\n        745.8632682959237\n      ],\n      \"l_shoulder\": [\n        329.91354616483045,\n        380.2285340627036\n      ],\n      \"l_elbow\": [\n        366.24991726875305,\n        561.9103895823159\n      ],\n      \"l_wrist\": [\n        409.3993579546609,\n        718.6109899679818\n      ],\n      \"r_hip\": [\n        209.54931688308716,\n        732.2371291319528\n      ],\n      \"r_knee\": [\n        191.38113133112586,\n        1047.9093530972796\n      ],\n      \"r_ankle\": [\n        111.89531954129541,\n        1354.4974842866259\n      ],\n      \"l_hip\": [\n        329.91354616483045,\n        729.9661059379578\n      ],\n      \"l_knee\": [\n        318.55843019485474,\n        1050.180376291275\n      ],\n      \"l_ankle\": [\n        332.1845693588257,\n        1372.6656698385877\n      ],\n      \"r_eye\": [\n        334.4555925528209,\n        209.90179451306676\n      ],\n      \"l_eye\": [\n        361.7078708807627,\n        214.44384090105677\n      ],\n      \"r_ear\": [\n        239.07261840502417,\n        218.98588728904724\n      ],\n      \"l_ear\": [\n        323.1004765828451,\n        228.06998006502772\n      ]\n    },\n    {\n      \"nose\": [\n        258.94939708709717,\n        252.844504992167\n      ],\n      \"neck\": [\n        253.35616477330518,\n        389.3193734486897\n      ],\n      \"r_shoulder\": [\n        164.98309421539307,\n        391.55666637420654\n      ],\n      \"r_elbow\": [\n        140.3728720347085,\n        581.7265650431314\n      ],\n      \"r_wrist\": [\n        120.23723570505763,\n        729.3878981272378\n      ],\n      \"l_shoulder\": [\n        341.7292353312173,\n        387.08208052317286\n      ],\n      \"l_elbow\": [\n        393.186972618103,\n        539.217999458313\n      ],\n      \"l_wrist\": [\n        372.0097432737514,\n        679.2034735620296\n      ],\n      \"r_hip\": [\n        187.35602347056056,\n        740.5743627548218\n      ],\n      \"r_knee\": [\n        196.30519517262792,\n        1042.608907699585\n      ],\n      \"r_ankle\": [\n        189.59331639607763,\n        1367.016381899516\n      ],\n      \"l_hip\": [\n        319.3563060760498,\n        742.8116556803384\n      ],\n      \"l_knee\": [\n        319.3563060760498,\n        1042.608907699585\n      ],\n      \"l_ankle\": [\n        326.0681848526001,\n        1364.779088973999\n      ],\n      \"r_eye\": [\n        234.3391749064126,\n        230.4715757369995\n      ],\n      \"l_eye\": [\n        288.03420511881495,\n        230.4715757369995\n      ],\n      \"r_ear\": [\n        191.83060932159424,\n        246.1326262156167\n      ],\n      \"l_ear\": [\n        323.8308919270835,\n        243.8953332901001\n      ]\n    },\n    {\n      \"nose\": [\n        212.8460352420807,\n        241.63070877393102\n      ],\n      \"neck\": [\n        221.85462244351697,\n        385.7681039969127\n      ],\n      \"r_shoulder\": [\n        136.27304402987147,\n        381.26381039619446\n      ],\n      \"r_elbow\": [\n        116.00372282663966,\n        577.2005820274353\n      ],\n      \"r_wrist\": [\n        95.73440162340785,\n        737.103004852931\n      ],\n      \"l_shoulder\": [\n        307.4362008571625,\n        390.27239759763097\n      ],\n      \"l_elbow\": [\n        332.2098156611123,\n        574.9484352270765\n      ],\n      \"l_wrist\": [\n        350.22699006398534,\n        741.6072984536486\n      ],\n      \"r_hip\": [\n        156.54236523310328,\n        743.8594452540083\n      ],\n      \"r_knee\": [\n        179.06383323669434,\n        1045.6471165021262\n      ],\n      \"r_ankle\": [\n        188.07242043813085,\n        1358.6955217520394\n      ],\n      \"l_hip\": [\n        287.16687965393066,\n        739.3551516532898\n      ],\n      \"l_knee\": [\n        316.444788058599,\n        1038.890676101049\n      ],\n      \"l_ankle\": [\n        372.74845806757594,\n        1354.1912281513214\n      ],\n      \"r_eye\": [\n        185.8202736377716,\n        210.10065356890345\n      ],\n      \"l_eye\": [\n        244.37609044710803,\n        216.85709396998072\n      ],\n      \"r_ear\": [\n        145.28163123130798,\n        225.86568117141724\n      ],\n      \"l_ear\": [\n        291.6711732546487,\n        234.87426837285375\n      ]\n    },\n    {\n      \"nose\": [\n        270.0473074913025,\n        245.33865094184875\n      ],\n      \"neck\": [\n        259.05959951877594,\n        396.96902096271515\n      ],\n      \"r_shoulder\": [\n        171.15793573856354,\n        394.77147936820984\n      ],\n      \"r_elbow\": [\n        133.79972863197327,\n        566.179723739624\n      ],\n      \"r_wrist\": [\n        188.73826849460602,\n        566.179723739624\n      ],\n      \"l_shoulder\": [\n        346.96126329898834,\n        399.16656255722046\n      ],\n      \"l_elbow\": [\n        384.3194704055786,\n        566.179723739624\n      ],\n      \"l_wrist\": [\n        333.7760137319565,\n        577.1674317121506\n      ],\n      \"r_hip\": [\n        186.5407269001007,\n        735.3904265165329\n      ],\n      \"r_knee\": [\n        193.13335168361664,\n        1043.0462497472763\n      ],\n      \"r_ankle\": [\n        184.3431853055954,\n        1368.2824057340622\n      ],\n      \"l_hip\": [\n        316.195680975914,\n        735.3904265165329\n      ],\n      \"l_knee\": [\n        311.8005977869034,\n        1054.0339577198029\n      ],\n      \"l_ankle\": [\n        366.73913764953613,\n        1379.2701137065887\n      ],\n      \"r_eye\": [\n        243.67680835723877,\n        225.56077659130096\n      ],\n      \"l_eye\": [\n        296.4178066253662,\n        229.95585978031158\n      ],\n      \"r_ear\": [\n        204.1210596561432,\n        249.73373413085938\n      ],\n      \"l_ear\": [\n        327.18338894844055,\n        254.12881731987\n      ]\n    },\n    {\n      \"nose\": [\n        344.11319979031896,\n        245.34850724538182\n      ],\n      \"neck\": [\n        259.99156920115183,\n        393.129750172297\n      ],\n      \"r_shoulder\": [\n        207.6997447808585,\n        393.129750172297\n      ],\n      \"r_elbow\": [\n        171.3228234450021,\n        600.023490269979\n      ],\n      \"r_wrist\": [\n        166.77570827802037,\n        750.0782907803855\n      ],\n      \"l_shoulder\": [\n        312.2833936214447,\n        393.129750172297\n      ],\n      \"l_elbow\": [\n        323.6511815388999,\n        586.382144769033\n      ],\n      \"l_wrist\": [\n        350.9338725407915,\n        722.7955997784934\n      ],\n      \"r_hip\": [\n        239.5295509497323,\n        754.6254059473672\n      ],\n      \"r_knee\": [\n        266.8122419516244,\n        1057.008564551671\n      ],\n      \"r_ankle\": [\n        187.23772652943944,\n        1375.3066262404127\n      ],\n      \"l_hip\": [\n        314.556951204936,\n        752.3518483638763\n      ],\n      \"l_knee\": [\n        285.0007026195526,\n        1063.829237302144\n      ],\n      \"l_ankle\": [\n        282.72714503606176,\n        1377.580183823903\n      ],\n      \"r_eye\": [\n        319.1040663719177,\n        218.06581624348973\n      ],\n      \"l_eye\": [\n        350.9338725407915,\n        220.3393738269806\n      ],\n      \"r_ear\": [\n        237.25599336624146,\n        229.43360416094447\n      ],\n      \"l_ear\": [\n        330.47185428937246,\n        231.70716174443578\n      ]\n    },\n    {\n      \"nose\": [\n        192.68668580055237,\n        240.20380266507482\n      ],\n      \"neck\": [\n        227.17166233062744,\n        395.38619705041265\n      ],\n      \"r_shoulder\": [\n        137.51072335243225,\n        391.93769939740514\n      ],\n      \"r_elbow\": [\n        36.35479219754552,\n        490.79463211695384\n      ],\n      \"r_wrist\": [\n        86.93275777498866,\n        591.9505632718401\n      ],\n      \"l_shoulder\": [\n        316.83260130882263,\n        398.83469470342015\n      ],\n      \"l_elbow\": [\n        360.5135715802512,\n        571.2595773537951\n      ],\n      \"l_wrist\": [\n        408.79253872235586,\n        718.3954772154493\n      ],\n      \"r_hip\": [\n        130.61372804641724,\n        739.0864631334944\n      ],\n      \"r_knee\": [\n        146.70671709378576,\n        1040.2552581628165\n      ],\n      \"r_ankle\": [\n        167.3977030118308,\n        1357.5170422395072\n      ],\n      \"l_hip\": [\n        257.058641990026,\n        739.0864631334944\n      ],\n      \"l_knee\": [\n        286.94562164942454,\n        1031.059264421463\n      ],\n      \"l_ankle\": [\n        351.3175778388977,\n        1339.1250547568002\n      ],\n      \"r_eye\": [\n        171.99569988250732,\n        224.1108136177063\n      ],\n      \"l_eye\": [\n        222.57366545995046,\n        219.51281674702977\n      ],\n      \"r_ear\": [\n        155.9027108351388,\n        251.69879484176636\n      ],\n      \"l_ear\": [\n        280.04862634340907,\n        242.50280110041285\n      ]\n    }\n  ]\n}",
+        3,
+        100,
+        null
+      ]
+    }
+  ],
+  "links": [
+    [
+      3,
+      1,
+      0,
+      3,
+      0,
+      "POSEMODEL"
+    ],
+    [
+      4,
+      12,
+      0,
+      3,
+      1,
+      "IMAGE"
+    ],
+    [
+      15,
+      9,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      35,
+      3,
+      0,
+      32,
+      0,
+      "DWPOSES"
+    ],
+    [
+      41,
+      32,
+      0,
+      34,
+      0,
+      "IMAGE"
+    ],
+    [
+      91,
+      14,
+      0,
+      62,
+      0,
+      "INT"
+    ],
+    [
+      92,
+      13,
+      0,
+      63,
+      0,
+      "INT"
+    ],
+    [
+      99,
+      68,
+      0,
+      32,
+      2,
+      "INT"
+    ],
+    [
+      100,
+      69,
+      0,
+      32,
+      3,
+      "INT"
+    ],
+    [
+      101,
+      70,
+      0,
+      45,
+      1,
+      "INT"
+    ],
+    [
+      102,
+      71,
+      0,
+      45,
+      2,
+      "INT"
+    ],
+    [
+      109,
+      10,
+      0,
+      14,
+      0,
+      "INT"
+    ],
+    [
+      110,
+      54,
+      0,
+      13,
+      0,
+      "INT"
+    ],
+    [
+      111,
+      10,
+      0,
+      12,
+      2,
+      "INT"
+    ],
+    [
+      112,
+      54,
+      0,
+      12,
+      3,
+      "INT"
+    ],
+    [
+      119,
+      9,
+      0,
+      73,
+      0,
+      "IMAGE"
+    ],
+    [
+      170,
+      39,
+      0,
+      119,
+      0,
+      "NLFPRED"
+    ],
+    [
+      182,
+      85,
+      0,
+      123,
+      1,
+      "INT"
+    ],
+    [
+      183,
+      86,
+      0,
+      123,
+      2,
+      "INT"
+    ],
+    [
+      186,
+      124,
+      0,
+      123,
+      0,
+      "NLFPRED"
+    ],
+    [
+      187,
+      36,
+      0,
+      125,
+      0,
+      "NLFPRED"
+    ],
+    [
+      189,
+      125,
+      0,
+      126,
+      0,
+      "NLFPRED"
+    ],
+    [
+      190,
+      126,
+      0,
+      124,
+      0,
+      "NLFPRED"
+    ],
+    [
+      203,
+      124,
+      0,
+      39,
+      0,
+      "NLFPRED"
+    ],
+    [
+      207,
+      130,
+      0,
+      129,
+      0,
+      "NLFPRED"
+    ],
+    [
+      208,
+      131,
+      0,
+      130,
+      0,
+      "NLFPRED"
+    ],
+    [
+      209,
+      36,
+      1,
+      131,
+      0,
+      "NLFPRED"
+    ],
+    [
+      210,
+      129,
+      0,
+      45,
+      0,
+      "NLFPRED"
+    ],
+    [
+      212,
+      39,
+      0,
+      132,
+      0,
+      "NLFPRED"
+    ],
+    [
+      213,
+      66,
+      0,
+      132,
+      3,
+      "INT"
+    ],
+    [
+      214,
+      67,
+      0,
+      132,
+      4,
+      "INT"
+    ],
+    [
+      220,
+      135,
+      0,
+      133,
+      2,
+      "STRING"
+    ],
+    [
+      228,
+      123,
+      0,
+      138,
+      0,
+      "STRING"
+    ],
+    [
+      229,
+      139,
+      0,
+      45,
+      3,
+      "STRING"
+    ],
+    [
+      230,
+      140,
+      0,
+      132,
+      5,
+      "STRING"
+    ],
+    [
+      231,
+      141,
+      0,
+      39,
+      1,
+      "STRING"
+    ],
+    [
+      241,
+      143,
+      0,
+      142,
+      3,
+      "STRING"
+    ],
+    [
+      256,
+      119,
+      0,
+      150,
+      2,
+      "STRING"
+    ],
+    [
+      257,
+      119,
+      0,
+      151,
+      0,
+      "STRING"
+    ],
+    [
+      258,
+      148,
+      0,
+      151,
+      1,
+      "INT"
+    ],
+    [
+      259,
+      149,
+      0,
+      151,
+      2,
+      "INT"
+    ],
+    [
+      265,
+      155,
+      0,
+      157,
+      0,
+      "IMAGE"
+    ],
+    [
+      266,
+      45,
+      0,
+      155,
+      0,
+      "DWPOSES"
+    ],
+    [
+      267,
+      158,
+      0,
+      155,
+      2,
+      "STRING"
+    ],
+    [
+      272,
+      146,
+      0,
+      161,
+      3,
+      "INT"
+    ],
+    [
+      273,
+      147,
+      0,
+      161,
+      4,
+      "INT"
+    ],
+    [
+      275,
+      162,
+      0,
+      161,
+      5,
+      "STRING"
+    ],
+    [
+      276,
+      132,
+      0,
+      30,
+      0,
+      "IMAGE"
+    ],
+    [
+      283,
+      39,
+      0,
+      161,
+      0,
+      "NLFPRED"
+    ],
+    [
+      284,
+      45,
+      0,
+      161,
+      1,
+      "DWPOSES"
+    ],
+    [
+      285,
+      3,
+      0,
+      161,
+      2,
+      "DWPOSES"
+    ],
+    [
+      286,
+      161,
+      0,
+      72,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.17542024013676902,
+      "offset": [
+        -1644.470239202331,
+        1989.9236510620344
+      ]
+    },
+    "frontendVersion": "1.43.18",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
