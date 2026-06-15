@@ -11,3 +11,6 @@ NLF model (to ComfyUI/models/nlf)
 
 https://huggingface.co/Kijai/WanVideo_comfy/blob/main/SCAIL/nlf_l_multi_0.3.2_fp16.safetensors
 
+## Modification
+
+Add some SMPLX npz related features, loading, displaying, placing, etc.
